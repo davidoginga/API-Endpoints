@@ -1,0 +1,21 @@
+from flask import Flask, json, jsonify
+from flask import request
+
+app = Flask(__name__)
+
+answers = []
+@app.route('/postjson', methods=['POST'])
+def postjsonHandler():
+    Questions = {'Q1': 'What is the first question', 'Q2': 'What is the second question', 'Q3': [
+        'What is the third question', 'This is the answer'], 'Q4': 'What is the fourth question?'}
+    answer1 = Questions['Q1']   
+    answer1 = []
+    print(request.is_json)
+    content = request.get_json()
+    print(content)
+    answer1.append(content)
+    #print(answer1)
+    return 'Answer Posted'
+    
+
+app.run(host='0.0.0.0', port=8090)
