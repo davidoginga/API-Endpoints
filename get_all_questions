@@ -1,0 +1,9 @@
+from flask import Flask, json, jsonify #importing required APIs
+from flask import request
+app = Flask(__name__)#instantiating flask
+Questions={'Q1':'What is the first question', 'Q2':'What is the second question', 'Q3': ['What is the third question', 'This is the answer'], 'Q4':'What is the fourth question?'}
+@app.route('/', methods=['GET']) #route of the function (listening to the root URL)
+
+def show_all_questions():
+    return jsonify({'Questions': Questions})
+app.run(host='0.0.0.0', port=8090)    
