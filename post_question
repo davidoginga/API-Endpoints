@@ -1,0 +1,15 @@
+from flask import Flask, json, jsonify
+from flask import request
+
+app = Flask(__name__) #instance of the flask class
+
+
+@app.route('/postjson', methods=['POST']) #server listening on /postjson URL
+def postJsonHandler():
+    print(request.is_json) #to confirm if content is of type JSON
+    content = request.get_json() # to get the posted JSON data, call the get_json method on the request object. This parses the incoming JSON request data and returns it as python dictionary
+    print(content)
+    return 'JSON posted'
+
+
+app.run(host='0.0.0.0', port=8090) #start the server to be listening on 
